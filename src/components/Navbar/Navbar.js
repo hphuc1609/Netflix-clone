@@ -1,7 +1,6 @@
 import { BsSearch } from 'react-icons/bs';
 import classNames from 'classnames/bind';
 
-// import Logo from '~/assests/images/Iflix_logo.png';
 import styles from './Navbar.module.scss';
 import { useScrollY } from '~/components/hooks';
 

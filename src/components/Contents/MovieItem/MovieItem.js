@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
-import styles from './MovieContent.module.scss';
+import { MdDoubleArrow } from 'react-icons/md';
+import styles from './MovieItem.module.scss';
 
-function MovieContent({ movies, title, isIflix }) {
+function MovieItem({ movies, title, isIflix }) {
     const cx = classNames.bind(styles);
 
     const [dragDown, setDragDown] = useState(0);
@@ -57,7 +58,12 @@ function MovieContent({ movies, title, isIflix }) {
 
     return (
         <div className={cx('container')}>
-            <h3 className={cx('heading')}>{title}</h3>
+            <div className={cx('header')}>
+                <h3 className={cx('heading')}>{title}</h3>
+                <span className={cx('watch-more')}>
+                    Xem thêm <MdDoubleArrow />
+                </span>
+            </div>
             <div
                 className={cx('list')}
                 ref={sliderRef}
@@ -94,4 +100,4 @@ function MovieContent({ movies, title, isIflix }) {
     );
 }
 
-export default MovieContent;
+export default MovieItem;

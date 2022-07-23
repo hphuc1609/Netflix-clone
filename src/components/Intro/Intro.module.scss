@@ -60,13 +60,13 @@
 
 .fade-bottom {
     position: absolute;
-    bottom: 100px;
+    bottom: 99px;
     width: 100%;
     height: 200px;
     background-image: linear-gradient(
         to bottom,
         transparent,
-        rgba(0, 0, 0, 0.3) 30%,
+        rgba(0, 0, 0, 0.3) 28%,
         rgba(15, 15, 15),
         rgba(17, 17, 17)
     );
@@ -92,7 +92,7 @@
 
     .fade-bottom {
         height: 120px;
-        bottom: 62px;
+        bottom: 60px;
     }
 }
 

@@ -19,8 +19,6 @@
 }
 
 .logo {
-    width: 160px;
-    height: 100%;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -38,6 +36,7 @@
     display: flex;
     align-items: center;
     transition: all 0.4s ease-out;
+    margin-left: 30px;
     position: relative;
 
     &:hover .icon-search {
@@ -81,6 +80,10 @@
     align-items: center;
     justify-content: center;
     margin-left: auto;
+
+    @media screen and (max-width: 1023px) {
+        display: none;
+    }
 }
 
 .list {
@@ -106,19 +109,13 @@
     }
 }
 
-@media screen and (max-width: 1023px) {
-    .menu {
-        display: none;
-    }
-}
-
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .wrapper {
         height: 60px;
     }
 
-    .logo {
-        width: 150px;
+    .logo-name {
+        font-size: 3rem;
     }
 }
 
@@ -131,12 +128,8 @@
         padding: 0 10px;
     }
 
-    .logo {
-        width: 90px;
-
-        img {
-            height: 80%;
-        }
+    .logo-name {
+        font-size: 2rem;
     }
 
     .search {
