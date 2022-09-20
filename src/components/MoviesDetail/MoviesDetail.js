@@ -35,7 +35,7 @@ function MoviesDetail(props) {
                         <AiOutlineClose />
                     </div>
                     <div className={cx('movie-info')}>
-                        <h1 className={cx('movie-title')}>{movie?.title}</h1>
+                        <h1 className={cx('movie-title')}>{movie?.title || movie?.name}</h1>
                         <div className={cx('movie-details')}>
                             <p className={cx('movie-satistical')}>
                                 <span className={cx('movie-rating')}>Đánh giá: {movie?.vote_average} </span>

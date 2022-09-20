@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 import { useViewport } from '~/components/hooks/useViewport';
-import { getSearchMovies } from '~/components/store/actions';
+import { getSearchMovies, setMovieDetails } from '~/components/store/actions';
 import styles from './SearchMovies.module.scss';
 
 const useQuery = () => new URLSearchParams(useLocation().search);
@@ -49,7 +49,11 @@ function SearchMovies(props) {
                         if ((movie.backdrop_path !== null) & (movie.media_type !== 'person')) {
                             const imgUrl = `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`;
                             return (
-                                <div className={cx('movie-item')} key={index}>
+                                <div
+                                    className={cx('movie-item')}
+                                    key={index}
+                                    onClick={() => dispatch(setMovieDetails(movie))}
+                                >
                                     <img src={imgUrl} alt={movie.title || movie.name} className={cx('movie-img')} />
                                     <span className={cx('movie-name')}>{movie.title || movie.name}</span>
                                 </div>
