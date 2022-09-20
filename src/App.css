@@ -2,12 +2,14 @@
 
 :root {
     --bg-header-color: #000;
-    --background-color: #111;
+    --background-color: #151515;
     --black-color: #1e1e1e;
     --white-color: #fafafa;
-    --text-color: #ccc;
+    --text-color: #999;
 
-    --primary-color: #c70039;
+    --primary-color: #e00712;
+    --green-color: #00e600;
+    --yellow-color: #ffd700;
     --transition-default: all 0.3s ease-out;
 }
 
@@ -22,7 +24,7 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
     background-color: var(--background-color);

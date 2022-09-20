@@ -1,33 +1,41 @@
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
-import { MdDoubleArrow } from 'react-icons/md';
-import styles from './MovieItem.module.scss';
+import { useDispatch } from 'react-redux';
 
-function MovieItem({ movies, title, isIflix }) {
+import { setMovieDetails } from '~/components/store/actions';
+import styles from './MoviesRow.module.scss';
+
+function MoviesRow(props) {
+    const { movies, title, isNetflix } = props;
     const cx = classNames.bind(styles);
+    const dispatch = useDispatch();
 
     const [dragDown, setDragDown] = useState(0);
     const [dragMove, setDragMove] = useState(0);
     const [isDrag, setIsDrag] = useState(false);
 
+    const handleSetMovie = (movie) => {
+        dispatch(setMovieDetails(movie));
+    };
+
     const sliderRef = useRef();
     const movieRef = useRef();
 
     const handleScrollRight = () => {
-        // Lấy chiều dài của slider (scrollWidth) - chiều rộng của slider (clientWidth)
+        // Lấy chiều dài của slider (scrollWidth) - chiều rộng của slider (clientWidth) = chiều dài maxScrollLeft
         const maxScrollLeft = sliderRef.current.scrollWidth - sliderRef.current.clientWidth;
         const currentScrollLeft = sliderRef.current.scrollLeft;
 
         if (currentScrollLeft < maxScrollLeft) {
-            sliderRef.current.scrollLeft += movieRef.current.clientWidth * 2;
+            sliderRef.current.scrollLeft += movieRef.current.clientWidth * 4.2;
         }
     };
 
     const handleScrollLeft = () => {
         const currentScrollLeft = sliderRef.current.scrollLeft;
         if (currentScrollLeft > 0) {
-            sliderRef.current.scrollLeft -= movieRef.current.clientWidth * 2;
+            sliderRef.current.scrollLeft -= movieRef.current.clientWidth * 4.2;
         }
     };
 
@@ -60,9 +68,10 @@ function MovieItem({ movies, title, isIflix }) {
         <div className={cx('container')}>
             <div className={cx('header')}>
                 <h3 className={cx('heading')}>{title}</h3>
-                <span className={cx('watch-more')}>
-                    Xem thêm <MdDoubleArrow />
-                </span>
+                <a href="#more" className={cx('see-more')}>
+                    Xem thêm
+                    <BsChevronRight style={{ fontSize: '14px' }} />
+                </a>
             </div>
             <div
                 className={cx('list')}
@@ -77,12 +86,17 @@ function MovieItem({ movies, title, isIflix }) {
                     movies.map((movie, index) => {
                         if (movie.poster_path && movie.backdrop_path !== null) {
                             // Nếu có isIflix thì hiển thị ảnh poster, không thì hiển thị ảnh backdrop
-                            let imgURL = isIflix
+                            let imgURL = isNetflix
                                 ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
                                 : `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`;
 
                             return (
-                                <div className={cx('item')} key={index} ref={movieRef}>
+                                <div
+                                    className={cx('item')}
+                                    key={index}
+                                    ref={movieRef}
+                                    onClick={() => handleSetMovie(movie)}
+                                >
                                     <img src={imgURL} alt={movie.title || movie.name} />
                                     <span className={cx('name')}>{movie.title || movie.name}</span>
                                 </div>
@@ -100,4 +114,4 @@ function MovieItem({ movies, title, isIflix }) {
     );
 }
 
-export default MovieItem;
+export default MoviesRow;

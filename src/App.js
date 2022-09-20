@@ -1,14 +1,20 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import './App.css';
 import Navbar from '~/components/Navbar/Navbar';
-import Intro from '~/components/Intro/Intro';
-import Contents from '~/components/Contents/Contents';
+import Home from '~/components/Contents/Pages/Home';
+import Search from '~/components/Contents/Pages/Search';
 
 function App() {
     return (
         <div className="App">
-            <Navbar />
-            <Intro />
-            <Contents />
+            <BrowserRouter>
+                <Navbar />
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route path="/search" element={<Search />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }

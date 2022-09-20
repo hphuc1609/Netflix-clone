@@ -1,7 +1,11 @@
 .container {
-    margin-top: -80px;
+    margin-top: -120px;
 
-    @media (max-width: 1023px) {
-        margin-top: -40px;
+    @media screen and (min-width: 740px) and (max-width: 1023px) {
+        margin-top: 0px;
+    }
+
+    @media screen and (max-width: 739px) {
+        margin-top: 50px;
     }
 }

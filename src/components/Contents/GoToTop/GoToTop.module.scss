@@ -1,0 +1,35 @@
+.scrollTop {
+    font-size: 5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 50px;
+    right: 80px;
+    color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    z-index: 10;
+
+    &:hover {
+        color: rgba(255, 255, 255, 0.8);
+        transition: var(--transition-default);
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+
+    @media screen and (max-width: 1023px) {
+        font-size: 4.5rem;
+        bottom: 50px;
+        right: 50px;
+    }
+
+    @media screen and (max-width: 739px) {
+        font-size: 3rem;
+        bottom: 50px;
+        right: 30px;
+    }
+}

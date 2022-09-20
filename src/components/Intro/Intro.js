@@ -4,7 +4,7 @@ import styles from './Intro.module.scss';
 import { VscUnmute, VscMute } from 'react-icons/vsc';
 import { useState } from 'react';
 
-function Intro({ props }) {
+function Intro() {
     const cx = classNames.bind(styles);
 
     const [isMuted, setIsMuted] = useState(true);
@@ -27,10 +27,19 @@ function Intro({ props }) {
                 loop={true}
             />
             <div className={cx('info')}>
-                <h1 className={cx('heading')}>Baby Driver</h1>
-                <p className={cx('text')}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur
-                    sagittis, nisl nunc egestas nisi
+                <h1 className={cx('title')}>Quái xế Baby</h1>
+                <div className={cx('metadata')}>
+                    <span className={cx('year')}>2017</span>
+                    <span className={cx('spacer')}>|</span>
+                    <span className={cx('number')}>18+</span>
+                    <span className={cx('spacer')}>|</span>
+                    <span className={cx('time')}>1g 53ph</span>
+                    <span className={cx('spacer')}>|</span>
+                    <span className={cx('genre')}>Hành động & Hài</span>
+                </div>
+                <p className={cx('desc')}>
+                    Sau khi bị ép buộc làm việc cho một ông chủ tội phạm, một tài xế chạy trốn trẻ tuổi thấy mình tham
+                    gia vào một vụ cướp đã cam chịu thất bại.
                 </p>
             </div>
             <div className={cx('btn-volume')}>

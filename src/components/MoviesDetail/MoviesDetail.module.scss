@@ -1,0 +1,199 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    animation: fadeIn 1s ease;
+    display: none;
+}
+
+@keyframes fadeIn {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+// Show modal
+.showModal {
+    display: block;
+}
+
+// Hide modal
+.hideModal {
+    display: none;
+}
+
+.modal-backdrop {
+    position: fixed;
+    width: 95%;
+    height: 75%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    z-index: 300;
+    user-select: text;
+}
+
+.showBackdrop {
+    top: 15%;
+    left: 2.5%;
+    opacity: 1;
+    visibility: visible;
+}
+
+.hideBackdrop {
+    top: 0;
+    left: 2.5%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-container {
+    width: 100%;
+    height: 100%;
+    color: var(--white-color);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.94) 30%, rgba(0, 0, 0, 0.7) 60%, transparent, transparent);
+    border-radius: 10px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--primary-color);
+    }
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.movie-info {
+    padding-top: 16px;
+    padding-left: 25px;
+    padding-bottom: 16px;
+}
+
+.movie-details {
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+}
+
+.movie-satistical {
+    margin-top: 10px;
+}
+
+.movie-rating {
+    color: var(--green-color);
+    margin-right: 15px;
+}
+
+.movie-viewer {
+    color: var(--yellow-color);
+}
+
+.movie-label {
+    color: var(--text-color);
+    margin-right: 5px;
+}
+
+.movie-synopsis {
+    letter-spacing: -0.3px;
+    margin-top: 16px;
+}
+
+.movie-overview,
+.movie-runtime,
+.movie-date {
+    color: #ededed;
+}
+
+@media screen and (min-width: 740px) and (max-width: 1023px) {
+    .modal-backdrop {
+        height: 65%;
+    }
+    .modal-container {
+        width: 88%;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 50%, rgba(0, 0, 0, 0.733), transparent);
+    }
+
+    .movie-info {
+        max-width: 500px;
+        padding-left: 20px;
+    }
+
+    .movie-title {
+        font-size: 2.4rem;
+    }
+}
+
+@media screen and (max-width: 739px) {
+    .modal-backdrop {
+        top: 20%;
+        height: 60%;
+        background-position: 60% 0;
+    }
+
+    .modal-container {
+        width: 100%;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.8), transparent);
+    }
+
+    .movie-info {
+        font-size: 1.2rem;
+        max-width: 270px;
+        padding-left: 15px;
+    }
+
+    .movie-title {
+        font-size: 2rem;
+    }
+
+    .close-btn {
+        top: 15px;
+        right: 12px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .movie-title {
+        font-size: 1.7rem;
+    }
+
+    .movie-info {
+        font-size: 1rem;
+        max-width: 230px;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
