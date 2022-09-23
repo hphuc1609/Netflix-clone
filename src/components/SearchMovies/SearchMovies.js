@@ -15,7 +15,6 @@ function SearchMovies(props) {
     const dispatch = useDispatch();
     const { searchMovies } = useSelector((state) => state.infoMovies);
 
-    console.log(useLocation());
     const keywords = useQuery().get('keywords');
     useEffect(() => {
         if (keywords) {

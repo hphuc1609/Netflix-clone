@@ -46,29 +46,20 @@ function MoviesDetail(props) {
                                         : movie?.popularity}
                                 </span>
                             </p>
-                            <p className={cx('movie-genre')}>
-                                <span className={cx('movie-label')}>Thể loại:</span>
-                                <span className={cx('movie-list')}>
-                                    {movie?.genres?.map((genre, index) => <span key={index}>{genre.name}</span>) ||
-                                        'Chưa có thông tin'}
-                                </span>
-                            </p>
                             <p className={cx('movie-release')}>
                                 <span className={cx('movie-label')}>Phát hành:</span>
-                                <span className={cx('movie-date')}>{movie?.release_date}</span>
+                                <span className={cx('movie-date')}>
+                                    {movie?.release_date || movie?.first_air_date || movie?.last_air_date || 'N/A'}
+                                </span>
                             </p>
                             <p className={cx('movie-time')}>
                                 <span className={cx('movie-label')}>Thời lượng:</span>
-                                <span className={cx('movie-runtime')}>{movie?.runtime}</span>
-                            </p>
-                            <p className={cx('movie-actors')}>
-                                <span className={cx('movie-label')}>Diễn viên:</span>
-                                <span className={cx('movie-list')}>{movie?.credits?.cast}</span>
+                                <span className={cx('movie-runtime')}>{movie?.runtime || 'm'}</span>
                             </p>
                             <div className={cx('movie-synopsis')}>
                                 <p className={cx('movie-label')}>Nội dung:</p>
                                 <p className={cx('movie-overview')}>
-                                    {movie?.overview ? movie?.overview : 'Không có nội dung'}
+                                    {movie?.overview || 'Không có thông tin nội dung'}
                                 </p>
                             </div>
                         </div>
