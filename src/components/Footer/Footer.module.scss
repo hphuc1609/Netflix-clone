@@ -13,7 +13,12 @@
 
 
 @media screen and (max-width: 739px) {
-    .text {
+    .footer {
+        padding: 5px 0;
+        
+        .text {
         font-size: 1.2rem;
     }
+    }
 }
+
