@@ -7,11 +7,8 @@ function Footer() {
     return (
         <div className={cx('footer')}>
             <p>
-                <span className={cx('footer-text')}>Copyright © Netflix.</span>
-                <span className={cx('footer-text')}>All Rights Reserved</span>
-            </p>
-            <p>
-                <span className={cx('footer-mail')}>phucluu1609@gmail.com</span>
+                <span className={cx('text')}>Copyright © Netflix.</span>
+                <span className={cx('text')}>All Rights Reserved</span>
             </p>
         </div>
     );
