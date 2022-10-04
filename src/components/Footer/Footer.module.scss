@@ -7,14 +7,13 @@
     user-select: text;
 }
 
-.footer-text {
-    + .footer-text {
+.text + .text {
         margin-left: 5px;
     }
 }
 
 @media screen and (max-width: 739px) {
-    .footer-text {
+    .text {
         font-size: 1.2rem;
     }
 }
