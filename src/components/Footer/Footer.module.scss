@@ -13,6 +13,8 @@
     }
 }
 
-.footer-mail {
-    font-size: 1.5rem;
+@media screen and (max-width: 739px) {
+    .footer-text {
+        font-size: 1.2rem;
+    }
 }
