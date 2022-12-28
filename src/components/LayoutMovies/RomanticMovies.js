@@ -1,49 +1,41 @@
 import classNames from 'classnames/bind';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import { useViewport } from '~/components/hooks/useViewport';
-import { getSearchMovies, setMovieDetails } from '~/components/store/actions';
-import styles from './SearchMovies.module.scss';
+import { setMovieDetails } from '~/components/store/actions';
+import styles from './LayoutMovies.module.scss';
 
-const useQuery = () => new URLSearchParams(useLocation().search);
+const cx = classNames.bind(styles);
 
-function SearchMovies(props) {
-    const cx = classNames.bind(styles);
+function RomanticMovies() {
+    const { romanticMovies } = useSelector((state) => state.infoMovies);
     const windowWidth = useViewport();
     const dispatch = useDispatch();
-    const { searchMovies } = useSelector((state) => state.infoMovies);
-
-    const keywords = useQuery().get('keywords');
-    useEffect(() => {
-        if (keywords) {
-            dispatch(getSearchMovies(keywords));
-        }
-    }, [keywords, dispatch]);
 
     return (
         <div className={cx('container')}>
-            {searchMovies && searchMovies.length > 0 ? (
+            <h1 className={cx('title')}>Phim Tình Cảm</h1>
+            {romanticMovies && romanticMovies.length > 0 ? (
                 <div
                     className={cx('content')}
                     style={{
+                        display: 'grid',
                         gridTemplateColumns: `repeat(
                         ${
                             windowWidth > 1200
                                 ? 5
-                                : windowWidth > 992
+                                : windowWidth >= 992
                                 ? 4
-                                : windowWidth > 768
+                                : windowWidth >= 768
                                 ? 3
-                                : windowWidth > 600
+                                : windowWidth >= 600
                                 ? 2
-                                : 1
+                                : 2
                         }, auto)`,
                     }}
                 >
-                    {searchMovies.map((movie, index) => {
-                        if ((movie.backdrop_path !== null) & (movie.media_type !== 'person')) {
-                            const imgUrl = `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`;
+                    {romanticMovies.map((movie, index) => {
+                        if ((movie.poster_path !== null) & (movie.media_type !== 'person')) {
+                            const imgUrl = `https://image.tmdb.org/t/p/original/${movie.poster_path}`;
                             return (
                                 <div
                                     className={cx('movie-item')}
@@ -58,12 +50,10 @@ function SearchMovies(props) {
                     })}
                 </div>
             ) : (
-                <div className={cx('search-text')}>
-                    <h3>Không tìm thấy phim nào với từ khóa "{keywords}"</h3>
-                </div>
+                <div></div>
             )}
         </div>
     );
 }
 
-export default SearchMovies;
+export default RomanticMovies;

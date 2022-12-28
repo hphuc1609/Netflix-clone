@@ -111,12 +111,17 @@ export const getTvShows = () => async (dispatch) => {
     }
 };
 
-// Xem chi tiết phim hoặc phim truyền hình
-export const setMovieDetails = (movie) => (dispatch) => {
-    dispatch({
-        type: Types.SET_MOVIE_DETAILS, // Here is the type of action
-        payload: movie,
-    });
+// Phim drama
+export const getDramaMovies = () => async (dispatch) => {
+    try {
+        const result = await axios.get(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=18&language=vi`);
+        dispatch({
+            type: Types.GET_DRAMA_MOVIES, // Here is the type of action
+            payload: result.data.results,
+        });
+    } catch (error) {
+        console.log('Get Drama Movies Error: ', error);
+    }
 };
 
 // Tìm kiếm phim
@@ -131,4 +136,12 @@ export const getSearchMovies = (keywords) => async (dispatch) => {
     } catch (error) {
         console.log('Get Search Movies Error: ', error);
     }
+};
+
+// Thông tin phim
+export const setMovieDetails = (movie) => (dispatch) => {
+    dispatch({
+        type: Types.SET_MOVIE_DETAILS, // Here is the type of action
+        payload: movie,
+    });
 };

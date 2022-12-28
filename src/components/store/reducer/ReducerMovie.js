@@ -6,6 +6,7 @@ import {
     GET_ANIME_MOVIES,
     GET_FICTION_MOVIES,
     GET_TRENDING_MOVIES,
+    GET_DRAMA_MOVIES,
     GET_TV_SHOWS,
     GET_SEARCH_MOVIES,
     SET_MOVIE_DETAILS,
@@ -13,13 +14,14 @@ import {
 
 const InitialStates = {
     movieOriginals: null,
-    actionMoives: null,
+    actionMovies: null,
     horrorMovies: null,
     romanticMovies: null,
     animeMovies: null,
     fictionMovies: null,
-    trendingMovies: null,
+    dramaMovies: null,
     tvShows: null,
+    trendingMovies: null,
     movieDetails: null,
     searchMovies: null,
 };
@@ -35,7 +37,7 @@ const reducerMovie = (state = InitialStates, action) => {
         case GET_ACTION_MOVIES:
             return {
                 ...state,
-                actionMoives: payload,
+                actionMovies: payload,
             };
         case GET_HORROR_MOVIES:
             return {
@@ -57,6 +59,11 @@ const reducerMovie = (state = InitialStates, action) => {
                 ...state,
                 fictionMovies: payload,
             };
+        case GET_DRAMA_MOVIES:
+            return {
+                ...state,
+                dramaMovies: payload,
+            };
         case GET_TRENDING_MOVIES:
             return {
                 ...state,
@@ -67,15 +74,15 @@ const reducerMovie = (state = InitialStates, action) => {
                 ...state,
                 tvShows: payload,
             };
-        case SET_MOVIE_DETAILS:
-            return {
-                ...state,
-                movieDetails: payload,
-            };
         case GET_SEARCH_MOVIES:
             return {
                 ...state,
                 searchMovies: payload,
+            };
+        case SET_MOVIE_DETAILS:
+            return {
+                ...state,
+                movieDetails: payload,
             };
         default:
             return state;

@@ -1,11 +1,11 @@
-import className from 'classnames/bind';
+import classNames from 'classnames/bind';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import { setMovieDetails } from '~/components/store/actions';
 
 import styles from './MoviesDetail.module.scss';
 
-const cx = className.bind(styles);
+const cx = classNames.bind(styles);
 
 function MoviesDetail(props) {
     const { movie, showModal } = props;
@@ -17,9 +17,9 @@ function MoviesDetail(props) {
 
     return (
         <div className={cx('overlay')}>
-            <div className={cx('modal', `${showModal ? 'showModal' : 'hideModal'}`)} onClick={handleCloseModal}></div>
+            <div className={cx('modal', `${showModal ? 'showModal' : ''}`)} onClick={handleCloseModal}></div>
             <div
-                className={cx('modal-backdrop', `${showModal ? 'showBackdrop' : 'hideBackdrop'}`)}
+                className={cx('modal-backdrop', `${showModal ? 'showBackdrop' : ''}`)}
                 style={{
                     backgroundImage: `url(
                     ${

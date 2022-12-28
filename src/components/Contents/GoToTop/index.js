@@ -1,8 +1,8 @@
-import className from 'classnames/bind';
+import classNames from 'classnames/bind';
 import styles from './GoToTop.module.scss';
 
 function GoToTop({ children, onClick, scrollY }) {
-    const cx = className.bind(styles);
+    const cx = classNames.bind(styles);
     return (
         <div
             className={cx('scrollTop')}

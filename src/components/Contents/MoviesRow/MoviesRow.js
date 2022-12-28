@@ -2,13 +2,14 @@ import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { setMovieDetails } from '~/components/store/actions';
 import styles from './MoviesRow.module.scss';
 
 function MoviesRow(props) {
-    const { movies, title, isNetflix } = props;
     const cx = classNames.bind(styles);
+    const { movies, title, isNetflix, link } = props;
     const dispatch = useDispatch();
 
     const [dragDown, setDragDown] = useState(0);
@@ -66,12 +67,12 @@ function MoviesRow(props) {
 
     return (
         <div className={cx('container')}>
-            <div className={cx('header')}>
-                <h3 className={cx('heading')}>{title}</h3>
-                <a href="#more" className={cx('see-more')}>
+            <div className={cx('heading')}>
+                <h2 className={cx('title')}>{title}</h2>
+                <Link to={link} className={cx('see-more')}>
                     Xem thêm
                     <BsChevronRight style={{ fontSize: '14px' }} />
-                </a>
+                </Link>
             </div>
             <div
                 className={cx('list')}
@@ -85,7 +86,6 @@ function MoviesRow(props) {
                     movies.length > 0 &&
                     movies.map((movie, index) => {
                         if (movie.poster_path && movie.backdrop_path !== null) {
-                            // Nếu có isIflix thì hiển thị ảnh poster, không thì hiển thị ảnh backdrop
                             let imgURL = isNetflix
                                 ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
                                 : `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`;

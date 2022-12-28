@@ -16,7 +16,7 @@
         margin-top: 30px;
     }
 }
-.header {
+.heading {
     @include flex(baseline, space-between);
 
     .see-more {
@@ -26,8 +26,8 @@
     }
 }
 
-.heading {
-    font-size: 2rem;
+.title {
+    font-size: 2.5rem;
     font-weight: 500;
 }
 
@@ -103,7 +103,7 @@
     position: absolute;
     top: 50%;
     left: 35px;
-    transform: translateY(-50%);
+    transform: translateY(calc(-50% + 20px));
     display: flex;
     justify-content: center;
     cursor: pointer;
@@ -150,8 +150,8 @@
         }
     }
 
-    .heading {
-        font-size: 1.6rem;
+    .title {
+        font-size: 2rem;
     }
 
     .see-more {
@@ -164,7 +164,7 @@
 }
 
 @media screen and (max-width: 400px) {
-    .heading {
+    .title {
         font-size: 1.5rem;
     }
 }

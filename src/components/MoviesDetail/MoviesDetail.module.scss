@@ -7,7 +7,8 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 200;
     animation: fadeIn 1s ease;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
 }
 
 @keyframes fadeIn {
@@ -21,16 +22,14 @@
 
 // Show modal
 .showModal {
-    display: block;
-}
-
-// Hide modal
-.hideModal {
-    display: none;
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal-backdrop {
     position: fixed;
+    top: 50%;
+    left: 2.5%;
     width: 95%;
     height: 75%;
     background-size: cover;
@@ -41,20 +40,14 @@
     transition: all 0.5s ease;
     z-index: 300;
     user-select: text;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .showBackdrop {
-    top: 15%;
-    left: 2.5%;
+    transform: translateY(-50%);
     opacity: 1;
     visibility: visible;
-}
-
-.hideBackdrop {
-    top: 0;
-    left: 2.5%;
-    opacity: 0;
-    visibility: hidden;
 }
 
 .modal-container {
@@ -98,7 +91,7 @@
 .movie-details {
     height: 100%;
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
 }
 
 .movie-satistical {
@@ -151,8 +144,7 @@
 
 @media screen and (max-width: 739px) {
     .modal-backdrop {
-        top: 20%;
-        height: 60%;
+        height: 50%;
         background-position: 60% 0;
     }
 

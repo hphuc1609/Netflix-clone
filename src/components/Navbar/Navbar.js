@@ -1,9 +1,8 @@
-import { BsSearch } from 'react-icons/bs';
 import classNames from 'classnames/bind';
-
-import styles from './Navbar.module.scss';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { BsSearch } from 'react-icons/bs';
+import { Link, useNavigate } from 'react-router-dom';
+import styles from './Navbar.module.scss';
 
 function Navbar(props) {
     const cx = classNames.bind(styles);
@@ -13,8 +12,6 @@ function Navbar(props) {
     const handleSearchInput = (e) => {
         let keywords = e.target.value;
         setKeywords(keywords);
-
-        // Nếu có keywords thì hiện và ngược lại
         if (keywords.length > 0) {
             navigate(`/search?keywords=${keywords.trim()}`);
         } else {
@@ -36,12 +33,12 @@ function Navbar(props) {
                         alt="NETFLIX"
                     />
                 </div>
-                <a href="/" className={cx('mobile-logo')}>
+                <Link to="/" className={cx('mobile-logo')}>
                     <img
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Netflix_2015_N_logo.svg/82px-Netflix_2015_N_logo.svg.png"
                         alt="NETFLIX"
                     />
-                </a>
+                </Link>
                 <div className={cx('search')}>
                     <BsSearch className={cx('icon-search')} />
                     <input
@@ -51,66 +48,59 @@ function Navbar(props) {
                         onChange={handleSearchInput}
                     />
                 </div>
-                <div className={cx('menu')}>
+                <nav className={cx('menu')}>
                     <ul className={cx('list')}>
                         <li className={cx('item')}>
-                            <a href="#netflix" className={cx('link')}>
+                            <Link to="/" className={cx('link')}>
                                 Trang chủ
-                            </a>
+                            </Link>
                         </li>
                         <li className={cx('item')}>
-                            <a href="#movies" className={cx('link')}>
-                                Thể loại
-                            </a>
+                            <span className={cx('link')}>Thể loại</span>
                             <ol className={cx('sub-menu')}>
                                 <div>
                                     <li className={cx('sub-menu-item')}>
-                                        <a href="#action" className={cx('sub-menu-link')}>
+                                        <Link to="/action" className={cx('sub-menu-link')}>
                                             Hành động
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('sub-menu-item')}>
-                                        <a href="#romantic" className={cx('sub-menu-link')}>
+                                        <Link to="/romantic" className={cx('sub-menu-link')}>
                                             Tình cảm
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('sub-menu-item')}>
-                                        <a href="#fiction" className={cx('sub-menu-link')}>
+                                        <Link to="/fiction" className={cx('sub-menu-link')}>
                                             Viễn tưởng
-                                        </a>
+                                        </Link>
                                     </li>
                                 </div>
                                 <div>
                                     <li className={cx('sub-menu-item')}>
-                                        <a href="#horror" className={cx('sub-menu-link')}>
+                                        <Link to="/horror" className={cx('sub-menu-link')}>
                                             Kinh dị
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('sub-menu-item')}>
-                                        <a href="#cartoon" className={cx('sub-menu-link')}>
+                                        <Link to="/anime" className={cx('sub-menu-link')}>
                                             Hoạt hình
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('sub-menu-item')}>
-                                        <a href="#tvShows" className={cx('sub-menu-link')}>
-                                            Chính kịch
-                                        </a>
+                                        <Link to="/drama" className={cx('sub-menu-link')}>
+                                            Drama
+                                        </Link>
                                     </li>
                                 </div>
                             </ol>
                         </li>
                         <li className={cx('item')}>
-                            <a href="#anime" className={cx('link')}>
-                                Anime
-                            </a>
-                        </li>
-                        <li className={cx('item')}>
-                            <a href="#trending" className={cx('link')}>
-                                Trending
-                            </a>
+                            <Link to="/tvshows" className={cx('link')}>
+                                TV shows
+                            </Link>
                         </li>
                     </ul>
-                </div>
+                </nav>
             </div>
         </div>
     );
