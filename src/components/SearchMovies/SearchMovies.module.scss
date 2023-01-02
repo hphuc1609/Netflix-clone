@@ -1,21 +1,25 @@
 .container {
-    width: 100%;
-    padding-top: 80px;
+    min-height: 800px;
+    padding: 120px 60px 40px;
     transition: all 0.5s ease-in;
+
+    @media screen and (max-width: 1023px) {
+        padding: 120px 30px 40px;
+    }
 }
 
 .content {
+    height: 100%;
     display: grid;
     grid-gap: 20px;
     justify-content: center;
-    padding: 40px 60px 0;
 }
 
 .movie-item {
     position: relative;
     width: 100%;
-    max-width: 400px;
-    border-radius: 5px;
+    height: 200px;
+    border-radius: 3px;
     overflow: hidden;
     transition: var(--transition-default);
     cursor: pointer;
